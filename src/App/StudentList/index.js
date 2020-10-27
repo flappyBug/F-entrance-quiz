@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
 import * as Api from '../api';
 import './index.css';
@@ -41,12 +39,13 @@ export default class StudentList extends Component {
   renderAddStudentCell = () => {
     if (!this.state.isEditing) {
       return (
-        <div
+        <button
+          type="button"
           className="student-cell add-student"
           onClick={() => this.setState({ isEditing: true })}
         >
           +添加学员
-        </div>
+        </button>
       );
     }
     return (
