@@ -1,0 +1,15 @@
+.group-name {
+  background-color: #939bab;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+
+.group-students {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  border: #939bab 1px solid;
+  margin-bottom: 20px;
+}
