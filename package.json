@@ -12,12 +12,15 @@
     "lint": "eslint \"src/\" --cache --fix --format table"
   },
   "dependencies": {
+    "@babel/runtime": "^7.12.1",
+    "axios": "^0.21.0",
     "node-sass": "^4.14.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@testing-library/jest-dom": "^5.11.4",
