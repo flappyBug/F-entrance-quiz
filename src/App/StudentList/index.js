@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
-import Axios from 'axios';
+import * as Api from '../api';
 import './index.css';
 
 export default class StudentList extends Component {
@@ -15,7 +15,7 @@ export default class StudentList extends Component {
   }
 
   fetchStudents = () => {
-    Axios.get('http://localhost:8080/students')
+    Api.get('/students')
       .then((res) => res.data)
       .then((students) => this.setState({ students }));
   };
@@ -26,7 +26,7 @@ export default class StudentList extends Component {
 
   addStudent = (key) => {
     if (key.which !== 13) return;
-    Axios.post('http://localhost:8080/students', {
+    Api.post('/students', {
       name: this.state.newStudentName,
     })
       .then(() => {
