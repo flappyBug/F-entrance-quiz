@@ -71,9 +71,6 @@ export default class StudentList extends Component {
             </div>
           ))}
           {this.renderAddStudentCell()}
-          {/* <button type="button" className="student-cell add-student" onClick={this.addStudent}>
-            +添加学员
-          </button> */}
         </div>
       </section>
     );
