@@ -9,3 +9,4 @@ export function get(path) {
 export function post(path, data) {
   return Axios.post(`${BASE_URL}${path}`, data);
 }
+// TODO GTB-工程实践: + 有把数据请求提取到单独的service，并且提取URL常量

@@ -18,6 +18,7 @@ export default class StudentList extends Component {
       .then((students) => this.setState({ students }));
   };
 
+  // TODO GTB-知识点: - 不建议把componentDidMount写成箭头函数，https://github.com/keajs/kea-saga/issues/2
   componentDidMount = () => {
     this.fetchStudents();
   };
@@ -36,6 +37,7 @@ export default class StudentList extends Component {
       .then(this.fetchStudents);
   };
 
+  // TODO GTB-工程实践: + 复杂逻辑抽取方法，（这里也可以提取一个单独的组件）
   renderAddStudentCell = () => {
     if (!this.state.isEditing) {
       return (
@@ -56,6 +58,7 @@ export default class StudentList extends Component {
         onKeyPress={this.addStudent}
         onChange={({ target }) => this.setState({ newStudentName: target.value })}
       />
+      // TODO GTB-工程实践: * 这里可以不用在onChange的处理输入值，state也就不用管理newStudentName，onKeyPress的时候就可以直接拿到event.target.value
     );
   };
 

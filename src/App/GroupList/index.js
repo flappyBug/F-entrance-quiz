@@ -22,6 +22,7 @@ export default class GroupList extends Component {
   };
 
   regroupStudents = () => {
+    // TODO GTB-工程实践: - url 不太符合restful
     Api.post('/groups/regroup')
       .then((res) => res.data)
       .then((groups) => this.setState({ groups }));
@@ -29,6 +30,7 @@ export default class GroupList extends Component {
 
   render() {
     return (
+      // TODO GTB-知识点: + html 标签使用合理
       <section className="group-list">
         <header>
           <h1>分组列表</h1>
