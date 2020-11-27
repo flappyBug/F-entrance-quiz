@@ -1,12 +1,12 @@
 import React from 'react';
-import Students from '../students';
+import Trainees from '../trainees';
 import './index.css';
 
-const GroupCell = ({ name, students }) => (
+const GroupCell = ({ name, trainees }) => (
   <div>
     <header className="group-name">{name}</header>
-    <div className="group-students">
-      <Students students={students} />
+    <div className="group-trainees">
+      <Trainees trainees={trainees} />
     </div>
   </div>
 );
