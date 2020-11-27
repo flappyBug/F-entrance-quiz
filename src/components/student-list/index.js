@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { get, post } from '../../api';
+import AddStudentButton from '../add-student-button';
 import './index.css';
 
 export default class StudentList extends Component {
@@ -7,7 +8,6 @@ export default class StudentList extends Component {
     super();
     this.state = {
       students: [],
-      isEditing: false,
     };
   }
 
@@ -21,40 +21,10 @@ export default class StudentList extends Component {
       .then((students) => this.setState({ students }));
   };
 
-  addStudent = (keyEvent) => {
-    if (keyEvent.which !== 13) return;
+  addStudent = (name) => {
     post('/students', {
-      name: keyEvent.target.value,
-    })
-      .then(() => {
-        this.setState({
-          isEditing: false,
-        });
-      })
-      .then(this.fetchStudents);
-  };
-
-  // TODO GTB-工程实践: + 复杂逻辑抽取方法，（这里也可以提取一个单独的组件）
-  renderAddStudentCell = () => {
-    if (!this.state.isEditing) {
-      return (
-        <button
-          type="button"
-          className="student-cell add-student"
-          onClick={() => this.setState({ isEditing: true })}
-        >
-          +添加学员
-        </button>
-      );
-    }
-    return (
-      <input
-        type="text"
-        className="student-cell add-student"
-        value={this.state.newStudentName}
-        onKeyPress={this.addStudent}
-      />
-    );
+      name,
+    }).then(this.fetchStudents);
   };
 
   render() {
@@ -67,7 +37,7 @@ export default class StudentList extends Component {
               {`${id}.${name}`}
             </div>
           ))}
-          {this.renderAddStudentCell()}
+          <AddStudentButton onConfirm={this.addStudent} />
         </div>
       </section>
     );
