@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GroupCell from '../group-cell';
 import './index.css';
-import * as Api from '../../api';
+import { get, post } from '../../api';
 
 export default class GroupList extends Component {
   constructor() {
@@ -16,21 +16,19 @@ export default class GroupList extends Component {
   }
 
   fetchGroups = () => {
-    Api.get('/groups')
+    get('/groups')
       .then((res) => res.data)
       .then((groups) => this.setState({ groups }));
   };
 
   regroupStudents = () => {
-    // TODO GTB-工程实践: - url 不太符合restful
-    Api.post('/groups/regroup')
+    post('/groups/regroup')
       .then((res) => res.data)
       .then((groups) => this.setState({ groups }));
   };
 
   render() {
     return (
-      // TODO GTB-知识点: + html 标签使用合理
       <section className="group-list">
         <header>
           <h1>分组列表</h1>

@@ -1,9 +1,3 @@
-.student-cell {
-  background-color: #eeeeee;
-  text-align: center;
-  padding: 6px;
-}
-
 .student-cell.add-student {
   background-color: #f7f7f7;
   border: #929aab solid 1px;

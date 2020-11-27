@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { get, post } from '../../api';
 import AddStudentButton from '../add-student-button';
+import Students from '../students';
 import './index.css';
 
 export default class StudentList extends Component {
@@ -32,11 +33,7 @@ export default class StudentList extends Component {
       <section>
         <h1>学员列表</h1>
         <div className="student-list">
-          {this.state.students.map(({ id, name }) => (
-            <div key={id} className="student-cell">
-              {`${id}.${name}`}
-            </div>
-          ))}
+          <Students students={this.state.students} />
           <AddStudentButton onConfirm={this.addStudent} />
         </div>
       </section>
