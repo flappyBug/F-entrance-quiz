@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as Api from '../api';
+import { get, post } from '../../api';
 import './index.css';
 
 export default class StudentList extends Component {
@@ -8,30 +8,27 @@ export default class StudentList extends Component {
     this.state = {
       students: [],
       isEditing: false,
-      newStudentName: '',
     };
   }
 
+  componentDidMount() {
+    this.fetchStudents();
+  }
+
   fetchStudents = () => {
-    Api.get('/students')
+    get('/students')
       .then((res) => res.data)
       .then((students) => this.setState({ students }));
   };
 
-  // TODO GTB-知识点: - 不建议把componentDidMount写成箭头函数，https://github.com/keajs/kea-saga/issues/2
-  componentDidMount = () => {
-    this.fetchStudents();
-  };
-
-  addStudent = (key) => {
-    if (key.which !== 13) return;
-    Api.post('/students', {
-      name: this.state.newStudentName,
+  addStudent = (keyEvent) => {
+    if (keyEvent.which !== 13) return;
+    post('/students', {
+      name: keyEvent.target.value,
     })
       .then(() => {
         this.setState({
           isEditing: false,
-          newStudentName: '',
         });
       })
       .then(this.fetchStudents);
@@ -56,9 +53,7 @@ export default class StudentList extends Component {
         className="student-cell add-student"
         value={this.state.newStudentName}
         onKeyPress={this.addStudent}
-        onChange={({ target }) => this.setState({ newStudentName: target.value })}
       />
-      // TODO GTB-工程实践: * 这里可以不用在onChange的处理输入值，state也就不用管理newStudentName，onKeyPress的时候就可以直接拿到event.target.value
     );
   };
 

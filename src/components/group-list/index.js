@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import GroupCell from '../GroupCell';
+import GroupCell from '../group-cell';
 import './index.css';
-import * as Api from '../api';
+import * as Api from '../../api';
 
 export default class GroupList extends Component {
   constructor() {
