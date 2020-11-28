@@ -17,7 +17,7 @@ export default class TraineeList extends Component {
   }
 
   fetchTrainees = () => {
-    get('/trainees')
+    get('/trainees?grouped=false')
       .then((res) => res.data)
       .then((trainees) => this.setState({ trainees }));
   };
