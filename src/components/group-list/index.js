@@ -22,9 +22,9 @@ export default class GroupList extends Component {
   };
 
   regroupTrainees = () => {
-    post('/groups/regroup')
-      .then((res) => res.data)
-      .then((groups) => this.setState({ groups }));
+    post('/groups/auto-grouping')
+      .then(() => get('/groups'))
+      .then((res) => this.setState({ groups: res.data }));
   };
 
   render() {
